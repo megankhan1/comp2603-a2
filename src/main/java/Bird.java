@@ -25,4 +25,18 @@ public class Bird extends Animal implements Trackable {
      public boolean canFly(){
         return this.canFly;
      }
+
+     public boolean canRelocateTo(String targetIsland){
+        return true;
+     }
+
+     public double getRelocationCost(){
+        return 500.0 + getWeightKg() * 100.0;
+     }
+
+     public void relocateTo(String island){
+        setIsland(island);
+     }
+
+
 }

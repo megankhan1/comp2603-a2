@@ -67,4 +67,37 @@ public class Sanctuary {
     public String toString(){
         return name + " (" + island + ") [" +  getAnimalCount() + "/" + getCapacity() + " animals]";
     }
+
+    public ArrayList<Animal> getAnimalsOfType(String type){
+        ArrayList<Animal> byType = new ArrayList<>();
+        for(Animal a : animals) {
+            if (a.getType().equals(type)) {
+                byType.add(a);
+            }
+        }
+        return byType;
+    }
+
+    public double getDailyFoodBudget(){
+        double total = 0.0;
+
+        for(Animal a : animals){
+            total += a.getDailyFoodCostTTD();
+        }
+        return Math.round(total * 100.0) / 100.0;
+    }
+
+    public Animal getMostExpensiveAnimal(){
+        double maxCost = 0.0;
+        Animal maxA = null;
+        for(Animal a : animals){
+            if(a == null)
+                return null;
+            else if(a.getDailyFoodCostTTD() > maxCost){
+                maxCost = a.getDailyFoodCostTTD();
+                maxA = a;
+            }
+        }
+        return maxA;
+    }
 }

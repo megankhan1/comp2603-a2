@@ -7,7 +7,7 @@ public class Driver {
         System.out.println(b.getSightingCount());
         System.out.println(b.getLastSighting());
 
-        Bird b2 = new Bird("Scarlet", "Emerald", "Tobago", 0.35, "Healthy", 60.0, true);
+        Bird b2 = new Bird("Scarlet", "Emerald", "Trinidad", 0.40, "Healthy", 60.0, true);
         System.out.println(b2.getLastSighting());
 
         Sanctuary s = new Sanctuary("S", "Trinidad", 100);
@@ -16,5 +16,23 @@ public class Driver {
         s.addAnimal(b2);
 
         s.printRoster();
+
+        Bird b3 = new Bird("Dove", "Polly", "Trinidad", 0.25, "Healthy", 60.0, true);
+        Marine m = new Marine("Fish", "Nemo", "Trinidad", 500, "Healthy", 10, 15);
+
+        s.addAnimal(b3);
+
+        Reptile r = new Reptile("Lizard", "Lizzy", "Trinidad", 45.0, "Healthy", false, 5);
+        Reptile r2 = new Reptile("Lizard", "Mr Kiplin", "Trinidad", 30.0, "Healthy", false, 10);
+
+        s.addAnimal(r);
+        s.addAnimal(r2);
+        s.addAnimal(m);
+
+        System.out.println(b3.canRelocateTo("Jamaica"));
+        System.out.println(m.canRelocateTo("Jamaica"));
+
+        System.out.println(s.getDailyFoodBudget());
+        System.out.println(s.getMostExpensiveAnimal());
     }
 }
