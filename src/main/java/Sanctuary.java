@@ -100,4 +100,33 @@ public class Sanctuary {
         }
         return maxA;
     }
+
+    public ArrayList<Animal> etRelocatableAnimals(){
+        ArrayList<Animal> relocatable = new ArrayList<>();
+        for(Animal a : animals){
+            if(a instanceof Relocatable){
+                relocatable.add(a);
+            }
+        }
+        return relocatable;
+    }
+
+    public boolean transferAnimal(int animalId, Sanctuary target){
+        Animal a = removeAnimal(animalId);
+        if(a == null){
+            return false;
+        }
+        if(!(a instanceof Relocatable)){
+            addAnimal(a);
+            return false;
+        }
+        Relocatable r = (Relocatable) a;
+        r.relocateTo(target.getIsland());
+        if(!target.addAnimal(a)){
+            r. relocateTo(this.getIsland());
+            addAnimal(a);
+            return false;
+        }
+        return true;
+    }
 }
