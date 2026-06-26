@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,6 +21,8 @@ public class SanctuaryGUI extends JFrame implements ActionListener, KeyListener 
 
         JPanel topPanel = new JPanel();
 
+        topPanel.add(new JLabel("Search:"));
+
         text = new JTextField(30);
         topPanel.add(text);
 
@@ -32,14 +33,11 @@ public class SanctuaryGUI extends JFrame implements ActionListener, KeyListener 
         combo.addItem("Reptile");
         topPanel.add(combo);
 
-        checkBx = new JCheckBox("Injured");
+        checkBx = new JCheckBox("Injured/Critical");
         topPanel.add(checkBx);
 
         button = new JButton("Search");
         topPanel.add(button);
-
-        label = new JLabel("Search:");
-        topPanel.add(label);
 
         add(topPanel, BorderLayout.NORTH);
 
@@ -139,9 +137,9 @@ public class SanctuaryGUI extends JFrame implements ActionListener, KeyListener 
         caroni.addAnimal(b);
         caroni.addAnimal(b2);
         caroni.addAnimal(b3);
-        caroni.addAnimal(m);
         caroni.addAnimal(r);
         caroni.addAnimal(r2);
+        caroni.addAnimal(m);
 
         SanctuaryGUI s = new SanctuaryGUI();
 
