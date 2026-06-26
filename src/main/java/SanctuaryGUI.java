@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -8,27 +9,49 @@ import java.awt.event.KeyEvent;
 public class SanctuaryGUI extends JFrame implements ActionListener, KeyListener {
     private Sanctuary sanctuary;
     private JTextField text;
+    private JTextArea textResults;
     private JComboBox<String> combo;
     private JCheckBox checkBx;
     private JLabel label;
     private JButton button;
 
     public SanctuaryGUI(){
-        setTitle(sanctuary.getName());
         setSize(750, 550);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        text = new JTextField();
-        add(text);
+        JPanel topPanel = new JPanel();
+
+        text = new JTextField(30);
+        topPanel.add(text);
+
         combo = new JComboBox<>();
-        add(combo);
-        checkBx = new JCheckBox();
-        add(checkBx);
-        label = new JLabel();
-        add(label);
-        button = new JButton();
-        add(button);
+        combo.addItem("All");
+        combo.addItem("Bird");
+        combo.addItem("Marine");
+        combo.addItem("Reptile");
+        topPanel.add(combo);
+
+        checkBx = new JCheckBox("Injured");
+        topPanel.add(checkBx);
+
+        button = new JButton("Search");
+        topPanel.add(button);
+
+        label = new JLabel("Search:");
+        topPanel.add(label);
+
+        add(topPanel, BorderLayout.NORTH);
+
+        textResults = new JTextArea();
+        textResults.setEditable(false);
+
+        JScrollPane scrollPane = new JScrollPane(textResults);
+        add(scrollPane, BorderLayout.CENTER);
+
+        label = new JLabel("Ready");
+        add(label, BorderLayout.SOUTH);
+
         button.addActionListener(this);
         text.addKeyListener(this);
     }
@@ -75,7 +98,7 @@ public class SanctuaryGUI extends JFrame implements ActionListener, KeyListener 
             }
         }
 
-        text.setText(sb.toString());
+        textResults.setText(sb.toString());
 
         if (count == 0)
             label.setText("No matches");
