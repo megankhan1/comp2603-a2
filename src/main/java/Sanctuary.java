@@ -42,12 +42,21 @@ public class Sanctuary {
         return true;
     }
 
-    public Animal removeAnimal(int animalId){
+    /*public Animal removeAnimal(int animalId){
         for(Animal a : animals){
             if(a.getAnimalId() == animalId){
                Animal aR = a;
                animals.remove(a);
                return aR;
+            }
+        }
+        return null;
+    }*/
+
+    public Animal removeAnimal(int animalId){
+        for(int i = 0; i < animals.size(); i++){
+            if(animals.get(i).getAnimalId() == animalId){
+                return animals.remove(i);
             }
         }
         return null;
@@ -101,7 +110,7 @@ public class Sanctuary {
         return maxA;
     }
 
-    public ArrayList<Animal> etRelocatableAnimals(){
+    public ArrayList<Animal> getRelocatableAnimals(){
         ArrayList<Animal> relocatable = new ArrayList<>();
         for(Animal a : animals){
             if(a instanceof Relocatable){
@@ -117,14 +126,14 @@ public class Sanctuary {
             return false;
         }
         if(!(a instanceof Relocatable)){
-            addAnimal(a);
+            this.addAnimal(a);
             return false;
         }
         Relocatable r = (Relocatable) a;
         r.relocateTo(target.getIsland());
         if(!target.addAnimal(a)){
             r. relocateTo(this.getIsland());
-            addAnimal(a);
+            this.addAnimal(a);
             return false;
         }
         return true;

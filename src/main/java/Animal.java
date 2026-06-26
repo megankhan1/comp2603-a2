@@ -113,7 +113,7 @@ public abstract class Animal {
     public abstract double getDailyFoodCostTTD();
 
     public void setIsland(String island){
-
+        this.island = island;
     }
 
     @Override
