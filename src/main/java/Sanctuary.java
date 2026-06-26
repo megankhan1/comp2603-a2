@@ -42,17 +42,6 @@ public class Sanctuary {
         return true;
     }
 
-    /*public Animal removeAnimal(int animalId){
-        for(Animal a : animals){
-            if(a.getAnimalId() == animalId){
-               Animal aR = a;
-               animals.remove(a);
-               return aR;
-            }
-        }
-        return null;
-    }*/
-
     public Animal removeAnimal(int animalId){
         for(int i = 0; i < animals.size(); i++){
             if(animals.get(i).getAnimalId() == animalId){
