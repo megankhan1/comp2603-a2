@@ -142,9 +142,7 @@ public class SanctuaryGUI extends JFrame implements ActionListener, KeyListener 
         caroni.addAnimal(m);
 
         SanctuaryGUI s = new SanctuaryGUI();
-
         s.setModel(caroni);
-
         s.setVisible(true);
     }
 
